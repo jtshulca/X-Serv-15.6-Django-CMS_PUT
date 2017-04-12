@@ -4,14 +4,12 @@ from cms_put.models import Pages
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-
 def show(request):
     record = Pages.objects.all()
     respuesta = "Pages Found: "
     for page in record:
         respuesta += "<li>/" + page.name + " --> " + page.page
     return HttpResponse(respuesta)
-    
 @csrf_exempt
 def show_content(request, resource):
     if request.method == "GET":
